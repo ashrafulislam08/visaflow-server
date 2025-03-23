@@ -2,11 +2,12 @@ const express = require("express");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const visaHandler = require("./routeHandler/visaHandler");
-
+const cors = require("cors");
 const app = express();
 
 // middleware
 app.use(express.json());
+app.use(cors());
 
 mongoose
   .connect(
