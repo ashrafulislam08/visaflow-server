@@ -9,10 +9,33 @@ router.get("/", async (req, res) => {
 });
 
 // get visa by id
-router.get("/:id", (req, res) => {});
+router.get("/:id", async (req, res) => {
+  try {
+    const visa = await Visa.find({ _id: req.params.id });
+    res.send(visa);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 // update visa by id
-router.put("/", (req, res) => {});
+router.put("/", async (req, res) => {
+  try {
+    const updatedTodo = req.body;
+    await Todo.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: updatedTodo,
+      }
+    );
+
+    res.status(200).send({
+      message: "Successfully updated",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 // post a visa
 router.post("/", (req, res) => {
@@ -26,6 +49,16 @@ router.post("/", (req, res) => {
     .catch((error) => {
       console.log(error);
     });
+});
+
+// delete a visa
+router.delete(":id", async (req, res) => {
+  try {
+    await Visa.findByIdAndDelete({ _id: req.params.id });
+    res.status(200).json({ message: "Successfully deleted visa" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 module.exports = router;
