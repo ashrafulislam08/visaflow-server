@@ -1,6 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const mongoose = require("mongoose");
+const visaHandler = require("./routeHandler/visaHandler");
 
 const app = express();
 
@@ -9,7 +10,7 @@ app.use(express.json());
 
 mongoose
   .connect(
-    `mongodb+srv://VisaFlow:${process.env.DB_PASS}@cluster0.2xsor.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+    `mongodb+srv://VisaFlow:${process.env.DB_PASS}@cluster0.2xsor.mongodb.net/visaflow?retryWrites=true&w=majority&appName=Cluster0`
   )
   .then(() => {
     console.log("Successfully database connected");
@@ -20,3 +21,5 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
+
+app.use("/visas", visaHandler);
