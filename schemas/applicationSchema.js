@@ -35,7 +35,7 @@ const applicationSchema = mongoose.Schema({
   },
   applied_data: {
     type: Date,
-    default: Date().now(),
+    default: new Date(),
   },
 });
 
