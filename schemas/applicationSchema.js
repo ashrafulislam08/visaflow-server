@@ -9,6 +9,14 @@ const applicationSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  first_name: {
+    type: String,
+    required: true,
+  },
+  last_name: {
+    type: String,
+    required: true,
+  },
   visa_type: {
     type: String,
     required: true,
