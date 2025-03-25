@@ -29,6 +29,10 @@ const applicationSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  applicant_email: {
+    type: String,
+    required: true,
+  },
   applied_data: {
     type: Date,
     default: Date().now(),
