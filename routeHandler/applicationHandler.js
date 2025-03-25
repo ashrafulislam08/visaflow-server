@@ -26,3 +26,5 @@ router.post("/", async (req, res) => {
 
 // delete a application by id
 router.delete("/:id", async (req, res) => {});
+
+module.exports = router;

@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const visaHandler = require("./routeHandler/visaHandler");
+const applicationHandler = require("./routeHandler/applicationHandler");
 const cors = require("cors");
 const app = express();
 
@@ -24,3 +25,4 @@ mongoose
   });
 
 app.use("/visas", visaHandler);
+app.use("/apply", applicationHandler);
