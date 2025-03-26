@@ -51,9 +51,9 @@ router.post("/", async (req, res) => {
 });
 
 // delete a application by id
-router.delete(":id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
-    await Visa.findByIdAndDelete({ _id: req.params.id });
+    await Application.findByIdAndDelete({ _id: req.params.id });
     res.status(200).json({ message: "Successfully deleted visa" });
   } catch (error) {
     res.status(500).json({ message: error.message });
